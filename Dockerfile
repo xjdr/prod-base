@@ -5,6 +5,10 @@ MAINTAINER Jeff Rose <jeff.rose12@gmail.com>
 # ===== Use the "noninteractive" debconf frontend =====
 ENV DEBIAN_FRONTEND noninteractive
 
+# ===== Use Cloudfront =====
+RUN sh -c 'echo "deb [arch=amd64] http://cloudfront.debian.net/debian/ jessie main" > /etc/apt/sources.list'
+RUN sh -c 'echo "deb [arch=amd64] http://cloudfront.debian.net/debian-security/ jessie/updates main" >> /etc/apt/sources.list'
+
 # ===== Update apt-get =====
 RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get update
